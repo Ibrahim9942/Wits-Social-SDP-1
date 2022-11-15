@@ -10,7 +10,8 @@ import { AuthContext } from "../context/AuthContext";
 import Header from "../components/Header";
 
 
-
+// //This is the Settings functional component. It allows a user to change their name and biography.
+// The bio is fetched from firestore, and the name is updated in firestore on button press.
 
 const Settings = () => {
 
@@ -24,7 +25,8 @@ const Settings = () => {
     const { user } = useContext(AuthContext);
 
 
-    // fetches username from firestore to be displayed on profile page
+    // This code queries the database for a user's full name and biography, and sets the state variables with that data.
+    // It also stores the document id for later use.
     async function getFullName() {
 
         let dbUsername;
@@ -58,6 +60,7 @@ const Settings = () => {
 
     }
 
+    // updates full name
     const updateFullName = e => {
         e.preventDefault()
 
@@ -72,6 +75,8 @@ const Settings = () => {
 
 
     return (
+        // This code is a form for updating a user's bio and full name. The user's current bio and full name are pulled from the database and displayed in the form.
+        // When the user submits the form, the new bio and full name are updated in the database.
         <>
         <Header/>
 

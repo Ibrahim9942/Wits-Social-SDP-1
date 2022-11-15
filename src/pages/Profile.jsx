@@ -33,6 +33,8 @@ import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import NotFound from "../components/NotFound";
 import Loading from "../components/Loading";
 import {ImCompass2 as ExploreIcon} from "react-icons/im";
+// This is a functional component that renders a profile page for a specific user, based on the username that is passed in through the URL. The page includes the user's profile picture, name, bio, and the option to follow them.
+// There is also a grid of the user's posts.
 
 const Profile = () => {
   const params = useParams();
@@ -46,6 +48,9 @@ const Profile = () => {
   const [noUser, setNoUser] = useState(true);
   const navigate = useNavigate();
 
+  // The code is using the useEffect hook to asynchronously fetch data from the Firestore database.
+  // It is using the onSnapshot function to listen for changes in the database.
+  // If the database is changed, the code will re-render the component.
   useEffect(() => {
     const getData = async () => {
       const userQuery = query(
@@ -95,6 +100,9 @@ const Profile = () => {
     }
   }, [postIds]);
 
+  // Follows the profile that is currently being viewed
+// Adds the current user to the list of users followed by the profile
+// Adds the profile to the list of profiles followed by the current user
   const followProfile = async () => {
     console.log("follow", profileUser);
     if (!user) navigate("/login");
@@ -116,6 +124,8 @@ const Profile = () => {
     }
   };
 
+  // This code removes a user from the 'following' array in firebase.
+  // If the user is not logged in, they are redirected to the login page.
   const unFollowProfile = async () => {
     console.log("follow", profileUser);
     if (!user) navigate("/login");
@@ -138,6 +148,8 @@ const Profile = () => {
   };
 
   return (
+      // This is a page that displays the profile of a user. If the user is viewing their own profile, they have the option to edit their profile picture.
+      // The page also displays the user's posts.
     <div>
       <Header />
       <div className="mt-16 min-h-screen">

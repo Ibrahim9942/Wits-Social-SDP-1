@@ -1,5 +1,6 @@
 import React from "react";
 
+// This function renders a loading spinner and "Loading Data..." text to indicate that data is currently being loaded.
 const Loading = () => {
   return (
     <div className="flex h-screen justify-center items-center">

@@ -10,6 +10,8 @@ import { AiFillHeart as HeartIcon } from "react-icons/ai";
 import { nFormatter } from "../utility";
 import { Link } from "react-router-dom";
 
+// This is a card component for a profile post. It shows the post media, with an icon overlayed.
+// It also shows the number of likes and comments.
 const ProfilePostCard = ({ post, span }) => {
   return (
     <motion.div

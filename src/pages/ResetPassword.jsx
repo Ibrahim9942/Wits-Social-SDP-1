@@ -4,6 +4,8 @@ import { getAuth , sendPasswordResetEmail} from 'firebase/auth'
 
 
 // forgot password feature
+//This code is for a password reset page. A user enters their email address and clicks the 'reset password' button.
+// This will send them a password reset email. There is also a link back to the login page for users who remember their password.
 
 function ResetPassword() {
 
@@ -17,6 +19,8 @@ function ResetPassword() {
     }
 
     return (
+        // This code renders a form that allows a user to reset their password. A user must enter their email address, and then click the "Reset password" button.
+        // If a user remembers their password, they can click the "Return" link to go back to the login page.
         <div className="h-screen w-screen flex flex-wrap items-center justify-center p-3">
             <div className="flex items-center">
                 <div className="hidden md:block">

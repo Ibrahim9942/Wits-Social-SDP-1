@@ -19,10 +19,10 @@ import { AuthContext } from "../context/AuthContext";
 import Stories from "../components/Stories";
 import Footer from "../components/Footer";
 
-
-// Display posts and suggested users
+// This function oversees the main home page which displays a header, posts and suggested users
 const Home = () => {
 
+  // constant init
 
   const { user } = useContext(AuthContext);
   const [suggestUsers, setSuggestUsers] = useState();
@@ -32,8 +32,9 @@ const Home = () => {
 
 
 
-
-
+  //This code is using the useEffect React Hook to fetch data from a Firebase Firestore database.
+  // The code is ordering the data by the createdAt field in descending order and limiting the number of results to the limitNum variable.
+  // The code is then mapping the data to a posts array and setting the state of the posts variable to this array.
   useEffect(() => {
     const getData = async () => {       // fetch data
       const q = query(
@@ -76,6 +77,9 @@ const Home = () => {
     getData();
   }, [user?.uid]);
   return (
+      // This code renders a header, a list of posts, and a list of posts.
+      // If there are no posts, it displays a message saying so.
+      // There is a button to load more posts. The code also includes a dropdown to select an option.
       <>
         <Header />
         <div className="flex md:mt-14  max-w-4xl gap-2 mx-auto mb-8">

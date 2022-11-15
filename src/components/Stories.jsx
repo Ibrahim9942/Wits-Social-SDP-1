@@ -2,6 +2,8 @@ import React from "react";
 
 import { FakeUsers } from "../constants/fakeData";
 
+// //This is a functional component that renders a list of story cards.
+// Each story card will have the user's profile picture and username.
 const StoriyCard = ({ image, username }) => {
   return (
     <div>

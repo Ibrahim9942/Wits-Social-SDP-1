@@ -3,6 +3,7 @@ import React from "react";
 const Footer = () => {
   const date = new Date();
   return (
+      // This footer provides the website copyright and year
     <footer className="text-center p-3 font-thin max-w-4xl md:text-sm text-xs mx-auto text-gray-700 w-full">
       <div className="px-3">
         <div className="w-full ">

@@ -40,8 +40,9 @@ import {
 import { firestore } from "../firebase/config";
 import { AuthContext } from "../context/AuthContext";
 
-//All the functionality needed in the home page
+
 const HomePostCard = ({ post }) => {
+  // init variables
   const [commentInput, setCommentInput] = useState("");
   const [commentsArr, setCommentsArr] = useState([]);
   const [limitNum, setLimitNum] = useState(2);
@@ -50,6 +51,8 @@ const HomePostCard = ({ post }) => {
   const { user } = useContext(AuthContext);
   const swiper = useSwiper();
 
+  //This is the likePost function.It takes the post ID and updates the post document in Firestore to add the current user's UID to the array of users who have liked the post.
+  // It then sets the liked state to true.
   const likePost = async () => {
     const postRef = doc(firestore, `posts/${post?.id}`);
     updateDoc(
@@ -62,6 +65,8 @@ const HomePostCard = ({ post }) => {
     setLiked(true);
   };
 
+  // This code creates an async function that will unlike a post that the user has liked.
+  // It does this by removing the user's UID from the 'likedBy' array in the Firestore database.
   const unlikePost = async () => {
     const postRef = doc(firestore, `posts/${post?.id}`);
     updateDoc(
@@ -76,6 +81,9 @@ const HomePostCard = ({ post }) => {
     setLiked(false);
   };
 
+  // This code is saving a post for a user.
+  // It is creating references for the user and the post, and then update the post document to include the user's ID in the 'savedBy' array and the user document to include the post ID in the 'savedPost' array.
+  // Finally, it sets the 'saved' state to true.
   const savePost = async () => {
     console.log(user.uid, post.id);
     const userRef = doc(firestore, `user/${user.uid}`);
@@ -97,6 +105,7 @@ const HomePostCard = ({ post }) => {
     setSaved(true);
   };
 
+  // This function removes a post from a user's saved list
   const unsavePost = async () => {
     const userRef = doc(firestore, `user/${user.uid}`);
     const postRef = doc(firestore, `posts/${post.id}`);
@@ -117,6 +126,8 @@ const HomePostCard = ({ post }) => {
     setSaved(false);
   };
 
+  // //This code is for submitting comments. It takes the input from the user and stores it in the commentData variable.
+  // It then adds this data to the commentsCollectionRef.
   const commentSubmit = (e) => {
     e.preventDefault();
     // console.log(post?.id, post);
@@ -138,6 +149,9 @@ const HomePostCard = ({ post }) => {
     setCommentInput("");
   };
 
+  //This code is using the useEffect hook to get comments for a specific post.
+  // It is using the limit function to only get a certain number of comments as specified by the limitNum variable.
+  // If the user is logged in, it will also check to see if they have liked or saved the post.
   useEffect(() => {
     // console.log(user);
     const getComments = async () => {
@@ -167,6 +181,9 @@ const HomePostCard = ({ post }) => {
   }, [limitNum, post?.id, post?.likedBy,post?.savedBy, user?.uid]);
 
   return (
+      // This is the UI for a  post.
+      // The code includes a function for liking or unliking a post, a function for saving or unsaving a post, and a function for commenting on a post.
+      // The code also includes a link to the user's profile page and a link to the post page.
       <div
           animate={{ opacity: 1 }}
           initial={{ opacity: 0 }}

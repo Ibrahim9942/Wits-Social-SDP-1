@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+// This is the NotFound component. It is displayed when the user navigates to a page that does not exist.
+// It contains a message and a link to the home page.
 const NotFound = () => {
   return (
     <div className="w-full h-full flex justify-center flex-col items-center">

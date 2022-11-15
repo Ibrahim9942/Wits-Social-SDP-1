@@ -25,6 +25,7 @@ import Footer from "../components/Footer";
 import NotFound from "../components/NotFound";
 import Loading from "../components/Loading";
 
+//This code is for the SavedPosts component. It renders a list of posts that the current user has saved.
 const SavedPosts = () => {
     const params = useParams();
     const { username } = params;
@@ -34,6 +35,8 @@ const SavedPosts = () => {
     const [profileUser, setProfileUser] = useState(null);
     const [noUser, setNoUser] = useState(true);
 
+    // This code using the React Hooks useEffect(). The code is making a call to the database to retrieve a user with the given username, and setting the state variables accordingly.
+    // If the database query returns no results, the user is set to null and the noUser state variable is set to true.
     useEffect(() => {
         const getData = async () => {
             const userQuery = query(
@@ -61,6 +64,8 @@ const SavedPosts = () => {
         getData();
     }, [username]);
 
+    //This code is using the `useEffect` hook to fetch data from a Firebase database. It is using the `readIds` function to get data for each `postId` in the `postIds` array.
+    // If there is data in the `postIds` array, it will call the `getData` function, which will make a call to the `readIds` function. If the `readIds` function returns data, it will be stored in the `posts` array.
     useEffect(() => {
         const readIds = async (ids) => {
             const reads = ids.map((id) => getDoc(doc(firestore, "posts", `${id}`)));
@@ -84,6 +89,8 @@ const SavedPosts = () => {
     }, [postIds]);
 
     return (
+        // This is a code that renders a profile page for a user. If the user exists, it will render their posts. If the user does not exist, it will render a 'Not Found' page.
+        // If the page is loading, it will render a 'Loading' component.
         <div>
             <Header />
             <div className="mt-16 min-h-screen">

@@ -11,7 +11,7 @@ import { isValidEmail } from "../utility";
 import { AuthContext } from "../context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 
-// Login page
+// Login main function
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -35,6 +35,9 @@ const Login = () => {
 
 
 // on click of login
+  // This is a function to submit a form. It takes in an event parameter. It prevents the default action of the event.If the email is not valid, it will show an error message.
+  // If the password is less than 6 characters, it will show an error message.If the email is valid and the password is more than 6 characters,
+  // it will set the form to loading and login the user.If the user is not logged in, it will show an error message.
 
   const submitForm = async (e) => {
     e.preventDefault();
@@ -64,6 +67,8 @@ const Login = () => {
 
 
   return (
+      // The code renders a login page with a form for the user to input their credentials.
+      // There is also a link to the password reset page.
     <>
       <div className="h-screen w-screen flex flex-wrap items-center justify-center p-3"
            style={{

@@ -15,7 +15,9 @@ import { collection, getDocs, query, where } from "firebase/firestore";
 import { firestore } from "../firebase/config";
 
 
-// register page
+// This is the Register page.
+// It has a form for the user to input their credentials to create an account.
+// It also has links to the login page and the GitHub repository.
 const Register = () => {
   const [email, setEmail] = useState("");
   const [fullname, setFullname] = useState("");
@@ -32,6 +34,7 @@ const Register = () => {
 
   if (user) navigate("/");
 
+  //The following code defines a function to show an error message on the screen for 3 seconds.
   const showError = (error) => {
     setErrorMsg(error);
     setTimeout(() => {
@@ -41,6 +44,8 @@ const Register = () => {
 
 
   // on click of register button
+  // This code handles a form submission. If the email or password are invalid, an error message is displayed. If they are both valid, the code checks the database for duplicate users.
+  // If a duplicate is found, the user is informed. If no duplicate is found, the user is signed up and the form is reset.
   const submitForm = async (e) => {
     e.preventDefault();
     if (!isValidEmail(email)) showError("Invalid email address");
@@ -82,6 +87,8 @@ const Register = () => {
   }, [email, password]);
 
   return (
+      // This code renders a page that allows a user to sign up for an account. The page includes fields for the user's email, full name, username, and password.
+      // There is also a button to submit the form and a link to the login page.
     <>
       <div className="h-screen w-screen flex flex-wrap items-center justify-center p-3"
            style={{

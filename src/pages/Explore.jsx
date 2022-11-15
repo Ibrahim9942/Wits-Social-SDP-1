@@ -14,7 +14,10 @@ import { AiOutlineSearch as SearchIcon } from "react-icons/ai";
 import Loading from "../components/Loading";
 
 
-// Explore page main function - not active for this sprint
+// The Explore function retrieves posts from a database and displays them on the screen.
+// If there are no posts in the database, it will display a message saying "No posts yet".
+// Otherwise, it will display the posts in a grid.
+// The user has the option to load more posts by clicking on the "Load More" button.
 const Explore = () => {
   const [posts, setposts] = useState([]);
   const [limitNum, setLimitNum] = useState(9);

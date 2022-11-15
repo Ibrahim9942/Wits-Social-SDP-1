@@ -15,6 +15,11 @@ import {
 } from "firebase/auth";
 
 const AuthContext = createContext();
+
+// AuthProvider is a context provider which enables the global state management of user data throughout the app.
+// It makes use of the useState and useEffect hooks to asynchronously fetch the current user data from Firebase and update the user state accordingly.
+// The login, logout and signUp functions allow the user state to be updated when the corresponding AuthContext functions are called elsewhere in the app.
+
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);

@@ -8,7 +8,9 @@ import NotFound from "../components/NotFound";
 import { firestore } from "../firebase/config";
 
 
-// posting functionality
+// Main post function
+// This is a functional component for displaying a single post.
+// It retrieves the post data from firestore using the post id. If the post is not found, it displays a 'not found' message. Otherwise, it renders the post data in the HomePostCard component.
 const Post = () => {
   const params = useParams();
   const [post, setPost] = useState(null);

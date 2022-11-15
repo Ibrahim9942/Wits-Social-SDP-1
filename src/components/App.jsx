@@ -8,7 +8,7 @@ import {
 } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 
-// pages
+// pages import
 
 import "react-lazy-load-image-component/src/effects/blur.css";
 import Explore from "../pages/Explore";
@@ -17,12 +17,9 @@ import Login from "../pages/Login";
 import Profile from "../pages/Profile";
 import Register from "../pages/Register";
 import Post from "../pages/Post";
-import Reels from "../pages/Reels";
 import ResetPassword from "../pages/ResetPassword";
 import SavedPosts from "../pages/SavedPosts";
 import Settings from "../pages/Settings";
-import Following from "../pages/Following";
-import Followers from "../pages/Followers";
 import TweetsHome from "../pages/TweetsHome";
 import ChatBotPage from "./ChatBotPage";
 
@@ -57,7 +54,6 @@ const App = () => {
             path="/reels"
             element={
               <RequireAuth>
-                <Reels />
               </RequireAuth>
             }
 
@@ -73,8 +69,6 @@ const App = () => {
           <Route path="/register" element={<Register />} />
             <Route path="/settings" element={<Settings />} />
             <Route path="/ResetPassword" element={<ResetPassword />} />
-            <Route path="/Following" element={<Following />} />
-            <Route path="/Followers" element={<Followers />} />
             <Route path="/TweetsHome" element={<TweetsHome />} />
             <Route path="/ChatBotPage" element={<ChatBotPage />} />
         </Routes>
